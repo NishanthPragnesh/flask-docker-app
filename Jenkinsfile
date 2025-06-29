@@ -4,9 +4,10 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/NishanthPragnesh/flask-docker-app.git'
+                git url: 'https://github.com/NishanthPragnesh/flask-docker-app.git', branch: 'main'
             }
         }
+
 
         stage('Install Dependencies') {
             steps {
