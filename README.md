@@ -1,68 +1,73 @@
-🚀 Flask Docker App with Jenkins CI/CD & AWS ECR + EC2 Deployment
-This project demonstrates a complete CI/CD pipeline for a simple Flask application using Jenkins, Docker, AWS EC2, and Amazon ECR. The app is automatically built, containerized, and deployed on an EC2 instance using Jenkins.
+# 🚀 Flask Docker App with Jenkins CI/CD & AWS Deployment
 
-📂 Tech Stack
-Flask – Lightweight Python web framework
+A simple Flask app deployed using Jenkins CI/CD pipeline with Docker, hosted on an AWS EC2 instance, and Docker images managed via Amazon ECR. CloudWatch monitors the logs and metrics for visibility.
 
-Docker – Containerize the app
+---
 
-Jenkins – Automate build, test, and deployment
+## 🧰 Tech Stack
 
-AWS EC2 – Host Jenkins & deployed container
+- **Flask** – Python web framework  
+- **Docker** – Containerize the application  
+- **Jenkins** – Automate CI/CD workflow  
+- **AWS EC2** – Host Jenkins and deployed containers  
+- **AWS ECR** – Store Docker images  
+- **Amazon CloudWatch** – Monitor logs and metrics  
 
-AWS ECR – Docker image storage
+---
 
-Amazon CloudWatch – Monitoring logs and metrics
+## ⚙️ CI/CD Pipeline Steps
 
-⚙️ Pipeline Steps
-Git Clone – Jenkins pulls code from GitHub repo
+1. **Clone Repository** – Jenkins pulls code from GitHub  
+2. **Install Dependencies** – Installs Python packages via `pip`  
+3. **Build Docker Image** – Containerize the Flask app  
+4. **Push to AWS ECR** – Image is pushed to Amazon Elastic Container Registry  
+5. **Deploy on EC2** – Docker container is run on the EC2 instance  
+6. **Monitor via CloudWatch** – Logs and system metrics collected for monitoring  
 
-Install Requirements – Installs Python dependencies
+---
 
-Docker Build – Creates Docker image
+## 🗺️ Architecture Flow Diagram 
 
-Push to ECR – Stores image in AWS Elastic Container Registry
-
-Run on EC2 – Deploys the container with exposed port
-
-Monitor with CloudWatch – Logs & metrics collected
-
-🗺️ Architecture Flow Diagram
-
-                ┌────────────┐
-                │  GitHub    │
-                │ Repository │
-                └────┬───────┘
-                     │
-                     ▼
                ┌────────────┐
-               │  Jenkins   │  (on EC2)
-               │   Server   │
+               │  GitHub    │
+               │ Repository │
                └────┬───────┘
                     │
-      ┌─────────────┴──────────────┐
-      │    Build Docker Image      │
-      │      Push to AWS ECR       │
-      └─────────────┬──────────────┘
-                    │
                     ▼
-        ┌────────────────────────┐
-        │ AWS Elastic Container  │
-        │        Registry (ECR)  │
-        └────────────────────────┘
+              ┌────────────┐
+              │  Jenkins   │  (on EC2)
+              │   Server   │
+              └────┬───────┘
+                   │
+     ┌─────────────┴──────────────┐
+     │     Build Docker Image     │
+     │      Push to AWS ECR       │
+     └─────────────┬──────────────┘
                    │
                    ▼
-         ┌────────────────────┐
-         │   Docker Run App   │
-         │   on same EC2      │
-         └────────────────────┘
-                   │
-                   ▼
-          ┌─────────────────┐
-          │  CloudWatch     │
-          │(Logs & Metrics) │
-          └─────────────────┘
+       ┌────────────────────────┐
+       │  AWS Elastic Container │
+       │        Registry (ECR)  │
+       └────────────────────────┘
+                  │
+                  ▼
+        ┌────────────────────┐
+        │   Docker Run App   │
+        │   on same EC2      │
+        └────────────────────┘
+                 │
+                 ▼
+        ┌─────────────────┐
+        │  CloudWatch     │
+        │(Logs & Metrics) │
+        └─────────────────┘
 
-🌐 Access
-Visit the app on:
-http://100.25.203.173:5000
+---
+
+## 🌐 Access URL
+
+Visit the deployed Flask app at:  http://100.25.203.173:5000
+
+     
+
+
